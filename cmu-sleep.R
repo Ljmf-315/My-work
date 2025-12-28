@@ -7,6 +7,7 @@ sleep <- read_csv("~/Downloads/cmu-sleep.csv") %>%
          demo_race = recode(demo_race, "1" = "non-under", "0" = "under"),
          demo_firstgen = recode(demo_firstgen, "1" = "first", "0" = "non-first"),
          study = as.factor(study))
+#study period: 1.CMU Spring 2018 2.UW Spring 2018 3.UW Spring 2019 4.ND Spring 2016 5.CMU Spring 2017
 firstgen_gpa <- sleep %>% filter(!is.na(demo_firstgen))
 gender_gpa <- sleep %>% filter(!is.na(demo_gender))
 race_gpa <- sleep %>% filter(!is.na(demo_race))
@@ -95,3 +96,4 @@ new <- data.frame(study = factor("1", levels = levels(filtered$study)),
 predicted <- predict(model, new, interval = "confidence")
 #Conclusion: CMU freshmen with total sleep time of 360h during a month in Spring 2018 are expected to achieve 3.43 for the term 
 #on average, with a 95% conf interval ranging from 3.33 to 3.54
+
